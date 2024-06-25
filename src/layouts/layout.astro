@@ -1,0 +1,52 @@
+---
+import AsideMenu from '../components/AsideMenu.astro'
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="description" content="This is a simple website for with astro.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Spoticlon</title>
+  </head>
+  <body>
+    <div id="app" class="relative h-screen p-2 gap-2">
+      <aside class="[grid-area:aside] flex flex-col overflow-y-auto bg-blue-100">
+        <AsideMenu />
+      </aside>
+
+      <main class="[grid-area:main] rounded-lg bg-zinc-900 overflow-y-auto">
+        
+      </main>
+
+      <footer class="[grid-area:player] min-h-[100px]">
+        
+      </footer>
+
+      <slot />
+    </div>
+  </body>
+  <style>
+    #app {
+      display: grid;
+      grid-template-areas: 
+        "aside main main"
+        "player player player";
+      grid-template-columns: 350px 1fr;
+      grid-template-rows: 1fr auto;
+      background: var(--accent-gradient);
+    }
+
+  </style>
+
+  <style is:global>
+    html {
+      font-family: system-ui, sans-serif;
+      background: #000
+    }
+  </style>
+  
+</html>
