@@ -21,12 +21,16 @@ export function CardPlayButton ( { id, color, size = 'small' } ) {
       .then(res => res.json())
       .then(data => {
         const { songs, playlist } = data
+        const song = songs[0]
         setIsPlaying(true)
-        setCurrentMusic( { playlist, songs, song: songs[0] })
-        // actualiza el backcolor del contenerdor padre
-        document.body.style.backgroundColor = color.dark
-        console.log(color)
         
+        setCurrentMusic( { playlist, songs, song })
+
+        // lee el estado actual y lo muestra en la consola
+        currentMusic && console.log(currentMusic)
+
+        // actualiza el backcolor del contenerdor padre
+        document.body.style.backgroundColor = color.dark        
       })
   }
 

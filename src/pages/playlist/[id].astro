@@ -1,7 +1,7 @@
 ---
   import Layout from "@/layouts/Layout.astro"
   import { allPlaylists, songs } from "@/data/data";
-  import SongsTable from "@/components/SongsTable.astro";
+  import PlaylistTable from "@/components/PlaylistTable.astro";
   import { CardPlayButton } from "@/components/CardPlayButton";
 
   const { id } = Astro.params
@@ -89,7 +89,7 @@
     </div>
 
     <section class="p-6">
-      <SongsTable songs={playlistSongs} />
+      <PlaylistTable songs={playlistSongs} />
     </section>
   </div>
 </Layout>

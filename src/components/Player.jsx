@@ -110,7 +110,7 @@ const VolumeControl = () => {
   return (
     <div className="flex justify-center gap-x-2">
 
-      <button className="opacity-70 hover:opacity-100 transition" onClick={handleClickSilence}>
+      <button className="opacity-70 hover:opacity-100 transition duration-300" onClick={handleClickSilence}>
         {volume === 0 ? <VolumeSilence /> : <Volume />}  
       </button>
 
@@ -194,7 +194,7 @@ export function Player () {
       <div className="grid place-content-center gap-4 flex-1">
         <div className="flex justify-center flex-col items-center">
           <div className="flex gap-8">
-            <button onClick={clickPrevSong} title="Prev">
+            <button onClick={clickPrevSong} title="Prev" className="opacity-70 hover:opacity-100 transition duration-300">
               <Prev />
             </button>
             <button
@@ -203,7 +203,7 @@ export function Player () {
               className="bg-white rounded-full p-2">
               {isPlaying ? <Pause /> : <Play />}
             </button>
-            <button onClick={clickNextSong} title="Next">
+            <button onClick={clickNextSong} title="Next" className="opacity-70 hover:opacity-100 transition duration-300">
               <Next />
             </button>
           </div>
