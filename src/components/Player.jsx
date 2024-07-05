@@ -171,6 +171,9 @@ export function Player () {
       setIsPlaying(false);
       setCurrentMusic({ songs, playlist, song: songs[index + 1] })
       setIsPlaying(true);
+
+      // actualiza el color del elemento con id="playlist-container"
+      document.getElementById('playlist-container').style.backgroundColor = playlist.color.accent
     }
   }
 

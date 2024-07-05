@@ -26,9 +26,6 @@ export function CardPlayButton ( { id, size = 'small' } ) {
         
         setCurrentMusic( { playlist, songs, song })
         
-        // lee el estado actual y lo muestra en la consola
-        console.log(playlist.color)
-
         // actualiza el color del elemento con id="playlist-container"
         document.getElementById('playlist-container').style.backgroundColor = playlist.color.accent
       })

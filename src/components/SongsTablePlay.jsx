@@ -43,6 +43,9 @@ export const SongsTablePlay = ({song, isCurrentSong}) => {
     // the playlist is the same, set the current song
     setIsPlaying(true)
     setCurrentMusic({songs: currentMusic.songs, playlist: currentMusic.playlist, song: song})
+    // actualiza el color del elemento con id="playlist-container"
+    document.getElementById('playlist-container').style.backgroundColor = currentMusic.playlist.color.accent
+
   }
 
   const className = "hover:scale-125 transuition duration-300 ease-in-out bg-white/30 rounded-full p-1 h-5 w-5"
