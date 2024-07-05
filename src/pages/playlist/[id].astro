@@ -79,7 +79,7 @@
 
     <div class="pl-6 pt-4 pb-4">
       <div class="absolute">
-        <CardPlayButton id={id} size="large" client:load />
+        { playlistSongs.length == 0 ? null : <CardPlayButton id={id} size="large" client:load />}
       </div>
     </div>
 
