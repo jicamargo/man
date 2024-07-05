@@ -1,12 +1,12 @@
 import { Pause, Play } from './Player'
 import { usePlayerStore } from '@/store/playerStore'
 
-export function CardPlayButton ( { id, color, size = 'small' } ) {
+export function CardPlayButton ( { id, size = 'small' } ) {
   const { 
     isPlaying, 
     setIsPlaying, 
     currentMusic, 
-    setCurrentMusic 
+    setCurrentMusic
   } = usePlayerStore(state => state)
 
   const isPlayingPlaylist = isPlaying && currentMusic?.playlist.id === id
@@ -25,12 +25,12 @@ export function CardPlayButton ( { id, color, size = 'small' } ) {
         setIsPlaying(true)
         
         setCurrentMusic( { playlist, songs, song })
-
+        
         // lee el estado actual y lo muestra en la consola
-        currentMusic && console.log(currentMusic)
+        console.log(playlist.color)
 
-        // actualiza el backcolor del contenerdor padre
-        document.body.style.backgroundColor = color.dark        
+        // actualiza el color del elemento con id="playlist-container"
+        document.getElementById('playlist-container').style.backgroundColor = playlist.color.accent
       })
   }
 

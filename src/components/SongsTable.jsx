@@ -1,16 +1,20 @@
-import {SongsTablePlay} from "@/components/SongsTablePlay"
-import {usePlayerStore} from "@/store/playerStore";
+import { SongsTablePlay } from "@/components/SongsTablePlay"
+import { usePlayerStore } from "@/store/playerStore";
 import EqualizerIcon from '@/components/EqualizerIcon'
 import Time from '@/icons/Time'
 
 export const SongsTable = ({songs}) => {
-  const currentMusic = usePlayerStore(state => state.currentMusic);
+  
+  const { 
+    isPlaying, 
+    setIsPlaying, 
+    currentMusic, 
+    setCurrentMusic
+  } = usePlayerStore(state => state)
 
-  const isCurrentSong = (song) => {
-    const { song: currentSong, playlist } = currentMusic;
-    console.log(song)
-    console.log(currentSong)
-    return playlist?.albumId === song.albumId && currentSong?.id === song.id;
+  const isCurrentSong = (currentSong) => {
+    const { song, playlist } = currentMusic;
+    return playlist?.albumId === currentSong?.albumId && currentSong?.id === song?.id;
   };
 
   return (
@@ -31,10 +35,13 @@ export const SongsTable = ({songs}) => {
             const isCurrentSongBoolean = isCurrentSong(song)
             return (
               <tr
-                key={`{song.albumId}-${song.id}`} className="text-gray-300 border-spacing-0 text-sm font-light hover:bg-white/10 overflow-hidden transition duration-300 group">
+                key={`{song.albumId}-${song.id}`} 
+                className="text-gray-300 border-spacing-0 text-sm font-light
+                 hover:bg-white/5 overflow-hidden transition duration-300 group"
+              >
                 <td className="relative px-4 py-2 rounded-tl-lg rounded-bl-lg w-5">
                   <span className="absolute top-5 opacity-100 transition-all group-hover:opacity-0">
-                    {isCurrentSongBoolean ? <EqualizerIcon /> : index + 1 }
+                    {isCurrentSongBoolean && isPlaying ? <EqualizerIcon /> : index + 1 }
                   </span>
                   <div className="absolute top-5 opacity-0 transition-all group-hover:opacity-100">
                     <SongsTablePlay song={song} isCurrentSong={isCurrentSongBoolean}/>

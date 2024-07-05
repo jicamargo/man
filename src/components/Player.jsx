@@ -28,6 +28,8 @@ export const Next = () => (
 
 const CurrentSong = ({image, title, artists}) => {
   return (
+    // si no hay cancion seleccionada, no muestra nada
+    !title ? null :
     <div className="flex items-center gap-5 relative overflow-hidden">
       <picture className="w-16 h-16 bg-zinc-800 rounded-md shadow-lg overflow-hidden">
         <img src={image} alt={title} />
@@ -115,7 +117,7 @@ const VolumeControl = () => {
       </button>
 
       <Slider 
-        className="w-[95px]  bg-zinc-800 rounded-full"
+        className="w-[95px] " // bg-zinc-800 rounded-full"
         defaultValue={[50]}
         value = {[volume * 100]}
         min={0}
@@ -151,6 +153,8 @@ export function Player () {
   }, [currentMusic])
 
   const handleClick = () => {
+    const { song } = currentMusic
+    if (!song) return
     setIsPlaying(!isPlaying)
   }
 

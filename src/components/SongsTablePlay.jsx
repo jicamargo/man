@@ -6,7 +6,6 @@ const isNewSongOfAnotherPlaylist = (currentMusic, song) => {
   return currentMusic.playlist?.id != song.albumId
 }
 
-
 const setNewCurrentMusic = (song, setIsPlaying, setCurrentMusic) => {
   getPlayListInfoById(song.albumId).then((data) => {
     const { songs, playlist } = data;
@@ -46,8 +45,7 @@ export const SongsTablePlay = ({song, isCurrentSong}) => {
     setCurrentMusic({songs: currentMusic.songs, playlist: currentMusic.playlist, song: song})
   }
 
-
-  const className = "hover:scale-105"
+  const className = "hover:scale-125 transuition duration-300 ease-in-out bg-white/30 rounded-full p-1 h-5 w-5"
   return (
     <button onClick={() => handleClick(song)}>
       {isCurrentSongRunning(song) ? <Pause className={className}/> : <Play className={className}/>}
