@@ -1,6 +1,7 @@
 import { usePlayerStore } from "@/store/playerStore"
 import { useEffect, useRef, useState } from "react"
 import { Slider } from "./Slider"
+import useUpdatePlaylistBgColor from '@/hooks/useUpdatePlaylistBgColor';
 
 export const Pause = ({ className }) => (
   <svg className={className} role="img" height="16" width="16" aria-hidden="true" viewBox="0 0 16 16"><path d="M2.7 1a.7.7 0 0 0-.7.7v12.6a.7.7 0 0 0 .7.7h2.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7H2.7zm8 0a.7.7 0 0 0-.7.7v12.6a.7.7 0 0 0 .7.7h2.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7h-2.6z"></path></svg>
@@ -49,6 +50,8 @@ const CurrentSong = ({image, title, artists}) => {
 
 const SongControl = ({audio}) => {
   const [currentTime, setCurrentTime] = useState(0)
+
+  useUpdatePlaylistBgColor()
 
   useEffect(() => {
     audio.current.addEventListener('timeupdate', handleTimeUpdate)
@@ -148,7 +151,7 @@ export function Player () {
     if (song) {
       const src = `/music/${playlist?.id}/0${song.id}.mp3`
       audioRef.current.src = src
-      audioRef.current.play()
+      isPlaying ? audioRef.current.play() : audioRef.current.pause()
     }
   }, [currentMusic])
 
@@ -171,9 +174,6 @@ export function Player () {
       setIsPlaying(false);
       setCurrentMusic({ songs, playlist, song: songs[index + 1] })
       setIsPlaying(true);
-
-      // actualiza el color del elemento con id="playlist-container"
-      document.getElementById('playlist-container').style.backgroundColor = playlist.color.accent
     }
   }
 
