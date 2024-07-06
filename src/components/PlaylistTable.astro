@@ -1,0 +1,12 @@
+---
+import { type Song } from "@/data/data"
+import { SongsTable } from '@/components/SongsTable'
+
+interface Props {
+  songs: Song[]
+}
+
+const { songs } = Astro.props
+---
+
+<SongsTable songs={songs} client:visible />
