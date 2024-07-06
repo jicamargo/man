@@ -26,7 +26,6 @@ export const Next = () => (
   <svg fill="currentColor" role="img" height="16" width="16" aria-hidden="true" viewBox="0 0 16 16"><path d="M12.7 1a.7.7 0 0 0-.7.7v5.15L2.05 1.107A.7.7 0 0 0 1 1.712v12.575a.7.7 0 0 0 1.05.607L12 9.149V14.3a.7.7 0 0 0 .7.7h1.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7h-1.6z"></path></svg>
 )
 
-
 const CurrentSong = ({image, title, artists}) => {
   return (
     // si no hay cancion seleccionada, no muestra nada
@@ -93,7 +92,6 @@ const SongControl = ({audio}) => {
         {formatTime(duration)}
       </span>
     </div>
-
   )
 }
 
@@ -164,13 +162,13 @@ export function Player () {
   //------Section to control Prevoius and next song ---------------------------------
   
   const getSongIndex = (id) => {
-    return currentMusic.songs.findIndex(e => e.id === id) ?? -1
+    return currentMusic.songs.findIndex(e => e.id === id)
   }
 
   const clickNextSong = () => {
     const { song, playlist, songs } = currentMusic;
     const index = getSongIndex(song.id)
-    if (index > -1 && index + 1 < songs.length) {
+    if (index > -1 && index < songs.length-1) {
       setIsPlaying(false);
       setCurrentMusic({ songs, playlist, song: songs[index + 1] })
       setIsPlaying(true);
@@ -178,10 +176,9 @@ export function Player () {
   }
 
   const clickPrevSong = () => {
-
     const { song, playlist, songs } = currentMusic;
     const index = getSongIndex(song.id)
-    if (index > -1 && index > 0) {
+    if (index > 0) {
       setIsPlaying(false);
       setCurrentMusic({ songs, playlist, song: songs[index - 1] })
       setIsPlaying(true);

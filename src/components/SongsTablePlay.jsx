@@ -1,17 +1,18 @@
 import {Play, Pause} from "@/components/Player";
 import {usePlayerStore} from "@/store/playerStore";
-import {getPlayListInfoById} from "@/lib/ApiServices";
+import {getPlayListInfoById} from "@/lib/ApiMiddleware";
 
 const isNewSongOfAnotherPlaylist = (currentMusic, song) => {
   return currentMusic.playlist?.id != song.albumId
 }
 
 const setNewCurrentMusic = (song, setIsPlaying, setCurrentMusic) => {
-  getPlayListInfoById(song.albumId).then((data) => {
-    const { songs, playlist } = data;
-    setIsPlaying(true);
-    setCurrentMusic({ songs: songs, playlist: playlist, song: song });
-  });
+  getPlayListInfoById(song.albumId)
+    .then((data) => {
+      const { songs, playlist } = data;
+      setIsPlaying(true);
+      setCurrentMusic({ songs: songs, playlist: playlist, song: song });
+    });
 };
 
 export const SongsTablePlay = ({song, isCurrentSong}) => {

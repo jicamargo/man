@@ -1,6 +1,7 @@
-import { songs } from '@/data/data'
+// import { songs } from '@/data/data'
 import { Pause, Play } from './Player'
 import { usePlayerStore } from '@/store/playerStore'
+import { getPlayListInfoById } from '@/lib/ApiMiddleware'
 
 export function CardPlayButton ( { id, size = 'small' } ) {
   const { 
@@ -18,14 +19,13 @@ export function CardPlayButton ( { id, size = 'small' } ) {
       return
     }
 
-    fetch(`/api/get-info-playlist.json?id=${id}`)
-      .then(res => res.json())
-      .then(data => {
-        const { songs, playlist } = data
+    getPlayListInfoById(id)
+      .then((data) => {
+        const { songs, playlist } = data;
         const song = songs[0]
-        setIsPlaying(true)
-        setCurrentMusic( { playlist, songs, song })
-      })
+        setIsPlaying(true);
+        setCurrentMusic({ songs, playlist, song });
+      });       
   }
 
   const iconSize = size === 'small' ? 'w-4 h-4' : 'w-6 h-6'

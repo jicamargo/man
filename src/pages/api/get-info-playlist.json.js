@@ -1,6 +1,6 @@
 import  { allPlaylists, songs as allsongs } from '@/data/data'
 
-export async function GET({ params, request}) {
+export async function GET({ request}) {
   // get the id from the URL search params
   const { url } = request
   const urlObject = new URL(url)
