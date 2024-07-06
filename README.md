@@ -2,8 +2,10 @@ Certainly! Here is the updated README for your project, MAN (Music Access Networ
 
 <br>
 <div align='center'>
-	<h1>MAN</h1>
-	<h1>Music Access Network</h1>
+	<h1>
+    MAN
+	  Music Access Network
+  </h1>
 </div>
 <a name="readme-top"></a>
 
