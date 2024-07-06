@@ -15,7 +15,7 @@ const setNewCurrentMusic = (song, setIsPlaying, setCurrentMusic) => {
     });
 };
 
-export const SongsTablePlay = ({song, isCurrentSong}) => {
+export const SongsTablePlay = ({song}) => {
   const {
     currentMusic,
     isPlaying,

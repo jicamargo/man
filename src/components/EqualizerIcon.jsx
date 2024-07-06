@@ -1,4 +1,3 @@
-import React from 'react';
 import '@/css/equalizerIcon.css'; // CSS para las animaciones
 
 const EqualizerIcon = () => {

@@ -6,10 +6,8 @@ import Time from '@/icons/Time'
 export const SongsTable = ({songs}) => {
   
   const { 
-    isPlaying, 
-    setIsPlaying, 
-    currentMusic, 
-    setCurrentMusic
+    isPlaying,
+    currentMusic 
   } = usePlayerStore(state => state)
 
   const isCurrentSong = (currentSong) => {
